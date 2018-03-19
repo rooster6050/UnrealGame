@@ -13,8 +13,8 @@ UCLASS()
 class UNREALGAME_API AUnrealGameGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
-	
-	
-	
+
+
+	AUnrealGameGameModeBase();
 	
 };
