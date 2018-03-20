@@ -24,9 +24,6 @@ private:
 		void MoveReleased();
 
 	class ARTSHud* m_pHud;
-
-	TArray<class ARTSBaseCharacter*> m_pSelectedUnits;
-
 public:
 	ARTSPlayerController();
 

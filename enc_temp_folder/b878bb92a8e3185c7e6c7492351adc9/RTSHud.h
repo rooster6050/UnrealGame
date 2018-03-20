@@ -23,11 +23,13 @@ private:
 public:
 	FVector2D m_vInitialPoint;
 	FVector2D m_vCurrentPoint;
-	uint8 m_bStartSelecting : 1;
 
 public:
 	FVector2D GetMousePos2D();
-	TArray<class ARTSBaseCharacter*> GetFoundActors() const	{ return m_pFoundUnits;	}
 
-	virtual void DrawHUD() override; // Basically Tick	
+	uint8 m_bStartSelecting : 1;
+
+	virtual void DrawHUD() override; // Basically Tick
+	
+	
 };

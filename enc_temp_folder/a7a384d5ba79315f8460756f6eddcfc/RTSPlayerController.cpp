@@ -2,9 +2,6 @@
 
 #include "RTSPlayerController.h"
 #include "UnrealGame/HUD/RTSHud.h"
-#include "UnrealGame/Character/RTSBaseCharacter.h"
-#include "Runtime/Engine/Classes/AI/Navigation/NavigationSystem.h"
-#include "DrawDebugHelpers.h"
 
 ARTSPlayerController::ARTSPlayerController()
 {
@@ -40,33 +37,8 @@ void ARTSPlayerController::SelectionPressed()
 void ARTSPlayerController::SelectionReleased()
 {
 	m_pHud->m_bStartSelecting = false;
-	m_pSelectedUnits = m_pHud->GetFoundActors();
 }
 
 void ARTSPlayerController::MoveReleased()
 {
-	if (m_pSelectedUnits.Num() > 0)
-	{
-		for (int i = 0; i < m_pSelectedUnits.Num(); ++i)
-		{
-			if (AController* pController = m_pSelectedUnits[i]->GetController())
-			{
-
-				FHitResult hit;
-				GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, hit);
-				FVector vMoveLoc = hit.Location + FVector(i / 2 * 100.0f, i % 2 * 100.0f, 0.0f); // Weird offset to prevent clumping - aka GRID formation
-				UNavigationSystem::SimpleMoveToLocation(pController, vMoveLoc);
-
-				// Debugging
-				if (const UWorld* pWorld = GetWorld())
-				{
-					float fRadius = 0.25f;
-					int32 iSegments = 10;
-					bool bPersist = false;
-					float fLifeTime = 3.0f;
-					DrawDebugSphere(pWorld, vMoveLoc, fRadius, iSegments, FColor::Red, bPersist, fLifeTime);
-				}
-			}
-		}
-	}
 }
