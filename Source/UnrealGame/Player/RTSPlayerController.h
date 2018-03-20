@@ -13,9 +13,23 @@ UCLASS()
 class UNREALGAME_API ARTSPlayerController : public APlayerController
 {
 	GENERATED_BODY()
-	
+private:
+	UFUNCTION()
+		void SelectionPressed();
+
+	UFUNCTION()
+		void SelectionReleased();
+
+	UFUNCTION()
+		void MoveReleased();
+
+	class ARTSHud* m_pHud;
 public:
 	ARTSPlayerController();
+
+	virtual void BeginPlay() override;
+
+	virtual void SetupInputComponent() override;
 	
 	
 };

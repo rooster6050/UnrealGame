@@ -60,6 +60,8 @@ ARTSPlayerCameraSpectatorPawn::ARTSPlayerCameraSpectatorPawn()
 void ARTSPlayerCameraSpectatorPawn::BeginPlay()
 {
 	Super::BeginPlay();
+
+	RepositionCamera();
 	
 }
 
