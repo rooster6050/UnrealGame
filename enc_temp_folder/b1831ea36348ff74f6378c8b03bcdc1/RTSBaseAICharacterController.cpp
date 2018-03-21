@@ -39,17 +39,3 @@ void ARTSBaseAICharacterController::Possess(APawn* pawn)
 		}
 	}
 }
-
-void ARTSBaseAICharacterController::IssueMoveCommand(const FVector& vMoveLoc)
-{
-	if (m_pBlackboard)
-	{
-		m_bMoveCommandIssued = true;
-		m_vMoveLocation = vMoveLoc;
-		m_pBlackboard->SetValue<UBlackboardKeyType_Bool>(m_iMoveCommandIssuedKeyID, m_bMoveCommandIssued);
-	}
-	else
-	{
-		// Debug print some bad ERROR msg
-	}
-}

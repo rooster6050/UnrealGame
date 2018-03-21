@@ -34,7 +34,5 @@ public:
 	ARTSBaseAICharacterController();
 
 	virtual void Possess(APawn* pawn) override;
-
-	void IssueMoveCommand(const FVector& vMoveLoc);
 	
 };

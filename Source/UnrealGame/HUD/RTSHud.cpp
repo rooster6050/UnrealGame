@@ -8,9 +8,11 @@
 
 FVector2D ARTSHud::GetMousePos2D()
 {
-	float posX, posY;
-	GetOwningPlayerController()->GetMousePosition(posX, posY);
-
+	float posX = 0.0f, posY = 0.0f;
+	if (APlayerController* PC = GetOwningPlayerController())
+	{
+		PC->GetMousePosition(posX, posY);
+	}
 	return FVector2D(posX, posY);
 }
 
@@ -36,7 +38,8 @@ void ARTSHud::HandleSelection()
 	{
 		for (int i = 0; i < m_pFoundUnits.Num(); ++i)
 		{
-			m_pFoundUnits[i]->SetDeselected();
+			if(m_pFoundUnits[i])
+				m_pFoundUnits[i]->SetDeselected();
 		}
 	}
 	m_pFoundUnits.Empty();
@@ -52,7 +55,8 @@ void ARTSHud::HandleSelection()
 	{
 		for (int i = 0; i < m_pFoundUnits.Num(); ++i)
 		{
-			m_pFoundUnits[i]->SetSelected();
+			if (m_pFoundUnits[i])
+				m_pFoundUnits[i]->SetSelected();
 		}
 	}
 }

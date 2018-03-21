@@ -17,7 +17,6 @@ UBTService_TestService::UBTService_TestService()
 
 void UBTService_TestService::OnGameplayTaskActivated(UGameplayTask& Task)
 {
-	int i = 5;
 }
 
 /** Notify called after GameplayTask changes state from Active (finishing or pausing) */
@@ -29,13 +28,19 @@ void UBTService_TestService::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* 
 
 	if (ARTSBaseAICharacterController* pUnitPC = Cast<ARTSBaseAICharacterController>(OwnerComp.GetAIOwner()))
 	{
-		if (const UWorld* pWorld = GetWorld())
+		if (UBlackboardComponent* pBlackboard = OwnerComp.GetBlackboardComponent())
 		{
-			if (ARTSPlayerController* PC = Cast<ARTSPlayerController>(pWorld->GetFirstPlayerController()))
+			if (const UWorld* pWorld = GetWorld())
 			{
-				if (UBlackboardComponent* pBlackboard = OwnerComp.GetBlackboardComponent())
+				// Spectator Pawn - AKA the player/user
+				if (ARTSPlayerController* PC = Cast<ARTSPlayerController>(pWorld->GetFirstPlayerController()))
 				{
+					// Initialising BB target value to the spectator pawn (player)
 					pBlackboard->SetValue<UBlackboardKeyType_Object>(pUnitPC->m_iTargetKeyID, PC);
+				}
+				else
+				{
+					pBlackboard->SetValue<UBlackboardKeyType_Object>(pUnitPC->m_iTargetKeyID, NULL);
 				}
 			}
 		}

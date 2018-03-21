@@ -57,7 +57,8 @@ void ARTSPlayerController::MoveReleased()
 				FVector vMoveLoc = hit.Location + FVector(i / 2 * 100.0f, i % 2 * 100.0f, 0.0f); // Weird offset to prevent clumping - aka GRID formation
 				if (ARTSBaseAICharacterController* pUnitController = Cast<ARTSBaseAICharacterController>(pController))
 				{
-					pUnitController->IssueMoveCommand(vMoveLoc);
+					pUnitController->m_bMoveCommandIssued = true;
+					pUnitController->m_vMoveLocation = vMoveLoc;
 				}
 
 				// Replacing with Blackboard and Behaviour Tree system
