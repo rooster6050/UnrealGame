@@ -14,24 +14,25 @@ class UNREALGAME_API ARTSBaseCharacter : public ACharacter
 private:
 	class UMaterialInstanceDynamic* m_pInitialMaterial;
 public:
+	
+	UPROPERTY(EditAnywhere, Category = "C++ AI")
+		class UBehaviorTree* m_pBehaviourTree;
+
+public:
 	// Sets default values for this character's properties
 	ARTSBaseCharacter();
 
-	void SetSelected();
-
-	void SetDeselected();
-
-protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	
+	void SetSelected();
+
+	void SetDeselected();
 	
 };
