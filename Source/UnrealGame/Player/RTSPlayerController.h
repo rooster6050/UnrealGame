@@ -23,9 +23,11 @@ private:
 	UFUNCTION()
 		void MoveReleased();
 
-	class ARTSHud* m_pHud;
-
-	TArray<class ARTSBaseCharacter*> m_pSelectedUnits;
+	UPROPERTY(VisibleAnywhere, Category = "C++ HUD")
+		class ARTSHud* m_pHud;
+	
+	UPROPERTY(VisibleAnywhere, Category = "C++ Selection")
+		TArray<class ARTSBaseCharacter*> m_pSelectedUnits;
 
 public:
 	ARTSPlayerController();

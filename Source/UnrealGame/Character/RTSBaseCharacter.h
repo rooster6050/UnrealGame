@@ -12,7 +12,11 @@ class UNREALGAME_API ARTSBaseCharacter : public ACharacter
 	GENERATED_BODY()
 
 private:
-	class UMaterialInstanceDynamic* m_pInitialMaterial;
+
+private:
+
+	UPROPERTY(VisibleAnywhere, Category = "C++ Material")
+		class UMaterialInstanceDynamic* m_pInitialMaterial;
 public:
 	
 	UPROPERTY(EditAnywhere, Category = "C++ AI")

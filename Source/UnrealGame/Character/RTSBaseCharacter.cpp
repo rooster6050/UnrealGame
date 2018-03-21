@@ -44,6 +44,7 @@ void ARTSBaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 
 void ARTSBaseCharacter::SetSelected()
 {
+
 	if (m_pInitialMaterial)
 	{
 		FName paramName("BodyColour");
